@@ -1,37 +1,33 @@
-function submitForm() {
-		var ERR=0;
-		var Fname = document.getElementById('Fname');
-		if (!Fname.value.length){FNE.className="error";FNE.innerHTML = "Cannot Be Blank"; Fname.className="fail"; ERR=1;}
-			else{FNE.className="confirm";FNE.innerHTML = "Success"; Fname.className="success";}
-		
-		var Bday = document.getElementById('birthday');
-		if (!Bday.value.length){BDE.className="error";BDE.innerHTML = "Cannot Be Blank"; Bday.className="fail"; ERR=1;}
-			else{BDE.className="confirm";BDE.innerHTML = "Success"; Bday.className="success";}
-			
-		var Email = document.getElementById('email');
-		if (!Email.value.length){EME.className="error";EME.innerHTML = "Cannot Be Blank"; Email.className="fail"; ERR=1;}
-		else {
-		if (Email.value.indexOf("@") === -1 || Email.value.indexOf(".") === -1 ){EME.className="error";EME.innerHTML = "Invalid Format"; Email.className="fail"; ERR=1;}
-			else{EME.className="confirm";EME.innerHTML = "Success"; Email.className="success";}
-			}
-		
-		
-		
-		var Comm = document.getElementById('comment');
-		if (!Comm.value.length){COMME.className="error";COMME.innerHTML = "Cannot Be Blank"; Comm.className="fail"; ERR=1;}
-			else{COMME.className="confirm";COMME.innerHTML = "Success";Comm.className="success";}
-                        
-			
-		
-               if (ERR===0){CONF.className="contentbox"; 
+/*JASON INITIALISATION*/
+                    var ad_metadata = {
+                        'ad0' : "ad 1",
+                        'ad1' : "ad 2",
+                        'ad2' : "ad 3",
+                        'ad3' : "ad 4",
+                        'ad4' : "ad 5"                                
+                    };
                    
-                    fnameout.innerHTML = Fname.value;
-                    birthout.innerHTML = Bday.Value;
-                    EmailOut.innerHTML = Email.value;
-                    commout.innerHTML = Comm.value;
-                    MAIN.style.display = "none";        
-                    CONF.style.display = "block";
+					/*function for displaying random ads*/
+                    function rand_ad_display() {
+                        var ad_div = document.getElementById("ad");
+                        var ad_keys = [];
+                        var ad_key = "";
+                    /*pushes the JASON into the working variable*/    
+                        for ( ad_key in ad_metadata ) {   
+                            ad_keys.push(ad_key);
+                        }
                     
+                        var ad_keys_len = ad_keys.length;
+                        var rand_ad_key = getRandAdKey(ad_keys.length);  
+                        var ad_key_value = ad_keys[rand_ad_key];                    
+                        var ad_metadata_value = ad_metadata[ad_key_value];
+                        /* sets the webpage display to current ad value*/
+                        ad_div.innerHTML = ad_metadata_value
+						document.title = ad_metadata_value;
+                   
+                        }
                     
-                }
-	}
+                        function getRandAdKey ( len ) {
+                            /*gets random number, 0 to len;*/
+                            return Math.floor(Math.random()* len);
+                        }
