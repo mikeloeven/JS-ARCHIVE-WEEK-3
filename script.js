@@ -30,4 +30,8 @@
                         function getRandAdKey ( len ) {
                             /*gets random number, 0 to len;*/
                             return Math.floor(Math.random()* len);
+<<<<<<< HEAD
                         }
+=======
+                        }
+>>>>>>> origin/gh-pages
